@@ -6,7 +6,11 @@ function App() {
     <div className="App">
       <h1 className="laughtitle">LAUGH MAP</h1>
       <h3 className="description">Need a laugh? Tell us where you are and we'll show you comedy shows happening in your area:</h3>
-
+      <div className="searchform">
+        <input type="text" />
+        <input type="text" />
+        <input type="submit" value="Search" />
+      </div>
     </div>
   );
 }

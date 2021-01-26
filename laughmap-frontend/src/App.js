@@ -1,5 +1,6 @@
 
 import './App.css';
+import Laughmap from './Components/laughmap.js';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <input type="text" />
         <input type="text" />
         <input type="submit" value="Search" />
+        <Laughmap />
       </div>
     </div>
   );

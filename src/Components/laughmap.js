@@ -6,22 +6,25 @@ import { useState, useEffect } from 'react';
 
 function Laughmap() {
 
-    const [item, setItems] = useState([]);
+    // const [item, setItems] = useState([]);
+
 
     const fetchShows = async () => {
         const response = await fetch('https://api.predicthq.com/v1/events', {
             headers: {
-                'Authorization': `Bearer ${process.env.LAUGH_APP_API_KEY}`,
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
                 'Content-type': 'application/json'
             },
-            body: {
-                'label': 'comedy'
+            params: {
+                'label': 'comedy',
+                'country': 'US'
             }
 
         })
         const data = await response.json();
         console.log(data);
-        setItems(items);
+        // setItems(items);
 
     }
 
@@ -31,9 +34,12 @@ function Laughmap() {
 
     return (
         <div>
-            {items.map()}
+            <h1>Shows</h1>
         </div>
     )
 }
 
 export default Laughmap;
+
+// return all the data in the params, when user selects that data, display it on the screen
+//might need an if statement?

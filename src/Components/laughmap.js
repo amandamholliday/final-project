@@ -6,11 +6,28 @@ import { useState, useEffect } from 'react';
 
 function Laughmap() {
 
-    // const [item, setItems] = useState([]);
+    const [shows, setShows] = useState([]);
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
+
+    const fetchLocation = async () => {
+        const response = await fetch('https://api.predicthq.com/v1/places?q=new%20york&type=locality', {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
+                'Content-type': 'application/json'
+            }
+        })
+        const data = await response.json();
+        // console.log("locations", data.results[0].location[1]);
+        setLatitude(data.results[0].location[1]);
+        setLongitude(data.results[0].location[0]);
+    }
 
 
     const fetchShows = async () => {
-        const response = await fetch('https://api.predicthq.com/v1/events/?country=US&label=comedy&offset=10', {
+        console.log("lat", latitude, "long", longitude);
+        const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&location_around.origin=${latitude}%2C${longitude}&offset=10`, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
@@ -24,13 +41,14 @@ function Laughmap() {
         })
         const data = await response.json();
         console.log(data);
-        // setItems(items);
+        setShows(data);
 
     }
 
     useEffect(() => {
+        fetchLocation();
         fetchShows();
-    }, []);
+    }, [latitude, longitude]);
 
     return (
         <div>

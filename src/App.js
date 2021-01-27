@@ -1,6 +1,7 @@
 
 import './App.css';
 import Laughmap from './Components/laughmap.js';
+import MyComponent from './Components/googlemap.js';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <input type="text" />
         <input type="submit" value="Search" />
         <Laughmap />
+        <MyComponent />
       </div>
     </div>
   );

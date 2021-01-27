@@ -10,7 +10,7 @@ function Laughmap() {
 
 
     const fetchShows = async () => {
-        const response = await fetch('https://api.predicthq.com/v1/events', {
+        const response = await fetch('https://api.predicthq.com/v1/events/?country=US&label=comedy&offset=10', {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,

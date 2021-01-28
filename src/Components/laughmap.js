@@ -40,7 +40,7 @@ function Laughmap() {
 
     const fetchShows = async (latitude, longitude) => {
         console.log("lat", latitude, "long", longitude);
-        const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&location_around.origin=${latitude}%2C${longitude}&offset=50`, {
+        const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&location_around.offset=100mi&location_around.origin=${latitude}%2C${longitude}&location_around.scale=100mi`, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,

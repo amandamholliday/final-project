@@ -2,16 +2,21 @@
 // each will pass data between eachother so they need to be together
 import "../App.css";
 import { useState, useEffect } from 'react';
-
+import { useRef } from 'react';
 
 function Laughmap() {
-
+    const locationInput = useRef(null);
     const [shows, setShows] = useState([]);
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
 
+    // const addLocation = async (event) => {
+    //     const userLocation = locationInput.current.value;
+    // }
+
+
     const fetchLocation = async () => {
-        const response = await fetch('https://api.predicthq.com/v1/places?q=new%20york&type=locality', {
+        const response = await fetch(`https://api.predicthq.com/v1/places?q=new%20york&type=locality`, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
@@ -52,6 +57,9 @@ function Laughmap() {
 
     return (
         <div>
+            <input type="text" ref={locationInput}/>
+            {/* <input type="text" /> */}
+            <input type="submit" value="Search" />
             <h1>Shows</h1>
         </div>
     )

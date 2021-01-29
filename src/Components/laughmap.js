@@ -40,7 +40,7 @@ function Laughmap() {
 
     const fetchShows = async (latitude, longitude) => {
         console.log("lat", latitude, "long", longitude);
-        const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&location_around.offset=100mi&location_around.origin=${latitude}%2C${longitude}&location_around.scale=100mi`, {
+        const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&within=100mi%40${latitude}%2C${longitude}`, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
@@ -71,6 +71,29 @@ function Laughmap() {
                 <input type="submit" value="Search" />
             </form>
             <h1>Shows</h1>
+            <div>
+                {shows
+                ? (
+                    <div>
+                        { shows.results
+                            ? shows.results.map((show, index) => {
+                                return (
+                                    <div key={index}>{show.title}
+                                        <p>
+                                            {show.entities[0].name} <br />
+                                            {show.entities[0].formatted_address} <br />
+                                            {show.start}
+                                        </p>
+                                    </div>
+                                )
+                            })
+                            : <h4>Waiting for location...</h4>
+                        }
+                    </div>
+                )
+                : <h4>No available shows.</h4>
+                }
+            </div>
         </div>
     )
 }

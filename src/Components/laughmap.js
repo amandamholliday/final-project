@@ -71,18 +71,19 @@ function Laughmap() {
                 <input type="submit" value="Search" />
             </form>
             <h1>Shows</h1>
-            <div>
+            <div className="showsbox">
                 {shows
                 ? (
                     <div>
                         { shows.results
                             ? shows.results.map((show, index) => {
                                 return (
-                                    <div key={index}>{show.title}
+                                    <div key={index} className="oneshow">
+                                        <h3>{show.title}</h3>
                                         <p>
                                             {show.entities[0].name} <br />
                                             {show.entities[0].formatted_address} <br />
-                                            {show.start}
+                                            {/* {show.start} */}
                                         </p>
                                     </div>
                                 )

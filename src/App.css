@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* overflow: scroll; */
 }
 
 .laughtitle {
@@ -12,4 +13,18 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.showsbox {
+  margin: 50px;
+  padding: 40px 60px;
+  height: 100vh;
+  text-align: start;
+  overflow: scroll;
+}
+
+.oneshow {
+  border: groove gray;
+  opacity: .8;
+  padding: 1%;
 }

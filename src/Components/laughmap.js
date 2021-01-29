@@ -4,7 +4,8 @@ import "../App.css";
 import { useState, useEffect } from 'react';
 import { useRef } from 'react';
 
-function Laughmap() {
+
+function Laughmap(props) {
     const locationInput = useRef(null);
     const [shows, setShows] = useState([]);
     // const [latitude, setLatitude] = useState(0);
@@ -80,11 +81,14 @@ function Laughmap() {
                                 return (
                                     <div key={index} className="oneshow">
                                         <h3>{show.title}</h3>
-                                        <p>
-                                            {show.entities[0].name} <br />
-                                            {show.entities[0].formatted_address} <br />
-                                            {/* {show.start} */}
-                                        </p>
+                                        <div>
+                                            <p>{show.entities[0].name} </p>
+                                            <p>{show.entities[0].formatted_address} </p>
+                                            <p className="viewOnMap" onClick={() => {
+                                                props.setLatitude(show.location[0])
+                                                props.setLongitude(show.location[1])
+                                            }}>View on Map</p>
+                                        </div>
                                     </div>
                                 )
                             })
@@ -94,6 +98,7 @@ function Laughmap() {
                 )
                 : <h4>No available shows.</h4>
                 }
+                {/* {this.props.children} */}
             </div>
         </div>
     )

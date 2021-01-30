@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 function App() {
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
+    const [address, setAddress] = useState('');
 
   return (
     <div className="App">
@@ -18,12 +19,16 @@ function App() {
           longitude={longitude}
           setLatitude={setLatitude}
           setLongitude={setLongitude}
+          address={address}
+          setAddress={setAddress}
         />
         <MyGoogleMap 
           latitude={latitude}
           longitude={longitude}
           setLatitude={setLatitude}
           setLongitude={setLongitude}
+          address={address}
+          setAddress={setAddress}
         />
       </div>
     </div>

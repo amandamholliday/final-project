@@ -92,7 +92,9 @@ function Laughmap(props) {
                                         <h3>{show.title}</h3>
                                         <div>
                                             <p>{show.entities[0].name} </p>
-                                            <p>{show.entities[0].formatted_address} </p>
+                                            <p onClick={() => {
+                                                props.setAddress(show.entities[0].formatted_address)
+                                            }}>{show.entities[0].formatted_address} </p>
                                             <p className="viewOnMap" onClick={() => {
                                                 props.setLatitude(show.location[0])
                                                 props.setLongitude(show.location[1])

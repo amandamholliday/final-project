@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { InfoWindow, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '70vh',
@@ -8,16 +9,20 @@ const containerStyle = {
   margin: '30px'
 };
 
-const center = {
-  lat: 40.714,
-  lng: -74.005
-};
-
 function MyGoogleMap(props) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY
   })
+
+  const center = {
+    lat: props.longitude,
+    lng: props.latitude
+  };
+
+//   const Marker = {
+//       set: props.address
+//   };
 
   const [map, setMap] = React.useState(null)
 
@@ -32,14 +37,19 @@ function MyGoogleMap(props) {
   }, [])
 
   console.log("From Google Map:","lat", props.latitude, "long", props.longitude)
+  console.log("From Google Map:", "address:", props.address)
 
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
-        onLoad={onLoad}
+        zoom={20}
+        onLoad={map => {
+            const bounds = new window.google.maps.LatLngBounds();
+            map.fitBounds(bounds);
+        }}
         onUnmount={onUnmount}
+        marker={Marker}
       >
         { /* Child components, such as markers, info windows, etc. */ }
         <></>

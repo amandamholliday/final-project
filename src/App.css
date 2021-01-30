@@ -1,12 +1,21 @@
 .App {
   text-align: center;
   /* overflow: scroll; */
+  background: url(https://res.cloudinary.com/dzgeqcksj/image/upload/v1612029268/Stand-up-Comedy_gkdwqx.jpg);
+  background-size: cover;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .laughtitle {
   color: rgb(235, 188, 68);
 }
 
+.searchform {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 .description {
   color: rgb(235, 188, 68);
 }
@@ -16,16 +25,17 @@
 }
 
 .showsbox {
-  margin: 50px;
+  margin: 30px;
   padding: 40px 60px;
   height: 100vh;
   text-align: start;
   overflow: scroll;
+  color: white;
 }
 
 .oneshow {
   border: groove gray;
-  opacity: .8;
+  opacity: .9;
   padding: 1%;
 }
 

@@ -23,39 +23,48 @@ function Laughmap(props) {
 
 
     const fetchLocation = async (userLocation) => {
-        const response = await fetch(`https://api.predicthq.com/v1/places?q=${userLocation}&type=locality`, {
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
-                'Content-type': 'application/json'
-            }
-        })
+        try {
+            const response = await fetch(`https://api.predicthq.com/v1/places?q=${userLocation}&type=locality`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
+                    'Content-type': 'application/json'
+                }
+            })
+    
+            const data = await response.json();
+            console.log("locations", data.results[0].location[1]);
+            // setLatitude(data.results[0].location[1]);
+            // setLongitude(data.results[0].location[0]);
+            fetchShows(data.results[0].location[1], data.results[0].location[0]);
 
-        const data = await response.json();
-        console.log("locations", data.results[0].location[1]);
-        // setLatitude(data.results[0].location[1]);
-        // setLongitude(data.results[0].location[0]);
-        fetchShows(data.results[0].location[1], data.results[0].location[0]);
+        } catch(error) {
+            console.log(error);
+        }
     }
 
 
     const fetchShows = async (latitude, longitude) => {
         console.log("lat", latitude, "long", longitude);
-        const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&within=100mi%40${latitude}%2C${longitude}`, {
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
-                'Content-type': 'application/json'
-            },
-            params: {
-                'label': 'comedy',
-                'country': 'US'
-            }
-
-        })
-        const data = await response.json();
-        console.log(data);
-        setShows(data);
+        try {
+            const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&within=100mi%40${latitude}%2C${longitude}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
+                    'Content-type': 'application/json'
+                },
+                params: {
+                    'label': 'comedy',
+                    'country': 'US'
+                }
+    
+            })
+            const data = await response.json();
+            console.log(data);
+            setShows(data);
+        } catch(error) {
+            console.log(error);
+        }
 
     }
 
@@ -98,7 +107,6 @@ function Laughmap(props) {
                 )
                 : <h4>No available shows.</h4>
                 }
-                {/* {this.props.children} */}
             </div>
         </div>
     )

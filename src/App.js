@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="laughtitle">LAUGH MAP</h1>
-      <h3 className="description">Need a laugh? Tell us the name of your city and we'll show you comedy shows happening in your area:</h3>
+      <h3 className="description">Need a laugh? Type in the name of your city and we'll show you comedy shows happening in your area:</h3>
       <div className="searchform">
         <Laughmap 
           latitude={latitude}

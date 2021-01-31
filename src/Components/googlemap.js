@@ -4,7 +4,7 @@ import { InfoWindow, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '70vh',
-  height: '90vh',
+  height: '70vh',
   padding: '40px',
   margin: '30px'
 };
@@ -20,17 +20,23 @@ function MyGoogleMap(props) {
     lng: props.latitude
   };
 
-//   const Marker = {
-//       set: props.address
-//   };
+  const position = {
+    lat: props.longitude,
+    lng: props.latitude
+  }
+
 
   const [map, setMap] = React.useState(null)
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
+  const onLoad = marker => {
+    console.log('marker: ', marker)
+  }
+
+//   const onLoad = React.useCallback(function callback(map) {
+//     const bounds = new window.google.maps.LatLngBounds();
+//     map.fitBounds(bounds);
+//     setMap(map)
+//   }, [])
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
@@ -43,14 +49,17 @@ function MyGoogleMap(props) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={20}
+        zoom={40}
         onLoad={map => {
             const bounds = new window.google.maps.LatLngBounds();
             map.fitBounds(bounds);
         }}
         onUnmount={onUnmount}
-        marker={Marker}
       >
+        <Marker
+        onLoad={onLoad}
+        position={position}
+        />
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
       </GoogleMap>

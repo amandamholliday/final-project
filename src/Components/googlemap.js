@@ -3,10 +3,10 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { InfoWindow, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '70vh',
-  height: '70vh',
-  padding: '40px',
-  margin: '30px'
+  width: '600px',
+  height: '600px',
+//   padding: '40px',
+//   margin: '30px'
 };
 
 function MyGoogleMap(props) {

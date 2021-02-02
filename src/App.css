@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   /* overflow: scroll; */
-  background: url(https://res.cloudinary.com/dzgeqcksj/image/upload/v1612029268/Stand-up-Comedy_gkdwqx.jpg);
+  background: url(https://res.cloudinary.com/dzgeqcksj/image/upload/v1612138383/shutterstock_646910404_qgomac.jpg);
   background-size: cover;
   height: 100vh;
   overflow: scroll;
@@ -11,6 +11,10 @@
   color: rgb(235, 188, 68);
   font-family: 'Limelight', cursive;
   font-size: 60px;
+}
+
+.search {
+  align-items: center;
 }
 
 .searchform {
@@ -24,6 +28,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.warning {
+  color: white;
 }
 
 .showsbox {
@@ -44,4 +52,9 @@
 .viewOnMap {
   color: blue;
   text-decoration: underline;
+}
+
+.showtitle {
+  display: flex;
+  justify-content: space-between;
 }

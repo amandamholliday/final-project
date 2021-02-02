@@ -74,23 +74,31 @@ function Laughmap(props) {
         // fetchShows();
     }, []);
 
+
     return (
-        <div className="searchbox">
-            <form onSubmit={(event) => addLocation(event)}>
+        <div>
+            <form className="search" onSubmit={(event) => addLocation(event)}>
                 <input type="text" ref={locationInput}/>
                 <input type="submit" value="Search" />
             </form>
-            <h1>Shows</h1>
+            <h5 className="warning">*due to COVID-19, dates and times may not be accurate*</h5>
             <div className="showsbox">
                 {shows
                 ? (
                     <div>
                         { shows.results
                             ? shows.results.map((show, index) => {
+                                const date = new Date(show.start);
+
                                 return (
                                     <div key={index} className="oneshow">
-                                        <h3>{show.title}</h3>
+                                        <div className="showtitle">
+                                            <h3>{show.title}</h3>
+                                            <h3>{date.getHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()} PM</h3>
+                                        </div>
                                         <div>
+                                            <p>{date.getMonth()}/{date.getDay()}/{date.getFullYear()}
+                                            </p>
                                             <p>{show.entities[0].name} </p>
                                             <p onClick={() => {
                                                 props.setAddress(show.entities[0].formatted_address)

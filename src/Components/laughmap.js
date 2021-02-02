@@ -28,7 +28,8 @@ function Laughmap(props) {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
-                    'Content-type': 'application/json'
+                    'Content-type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
                 }
             })
     

@@ -81,7 +81,7 @@ function Laughmap(props) {
                 <input type="text" ref={locationInput}/>
                 <input type="submit" value="Search" />
             </form>
-            <h5 className="warning">*due to COVID-19, dates and times may not be accurate*</h5>
+            <h5 className="warning">*due to COVID-19, dates and times may change*</h5>
             <div className="showsbox">
                 {shows
                 ? (
@@ -94,7 +94,7 @@ function Laughmap(props) {
                                     <div key={index} className="oneshow">
                                         <div className="showtitle">
                                             <h3>{show.title}</h3>
-                                            <h3>{date.getHours()}:{date.getMinutes() === 0 ? '00' : date.getMinutes()} PM</h3>
+                                            <h3>{date.getHours() > 12 ? date.getHours() - 12 : date.getHours() }:{date.getMinutes() === 0 ? '00' : date.getMinutes()} {date.getHours() === 12 ? 'AM' : 'PM'}</h3>
                                         </div>
                                         <div>
                                             <p>{date.getMonth()}/{date.getDay()}/{date.getFullYear()}

@@ -24,7 +24,7 @@ function Laughmap(props) {
 
     const fetchLocation = async (userLocation) => {
         try {
-            const response = await fetch(`https://api.predicthq.com/v1/places?q=${userLocation}&type=locality`, {
+            const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.predicthq.com/v1/places?q=${userLocation}&type=locality`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
@@ -47,7 +47,7 @@ function Laughmap(props) {
     const fetchShows = async (latitude, longitude) => {
         console.log("lat", latitude, "long", longitude);
         try {
-            const response = await fetch(`https://api.predicthq.com/v1/events/?label=comedy&within=100mi%40${latitude}%2C${longitude}`, {
+            const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.predicthq.com/v1/events/?label=comedy&within=100mi%40${latitude}%2C${longitude}`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
